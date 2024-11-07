@@ -1,0 +1,54 @@
+plugins {
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.java.zygisk)
+}
+
+android {
+    namespace 'com.v7878.hooks.nostoragerestrict'
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 30
+        targetSdk 35
+        versionCode 1_000_000
+        versionName "v1.0.0"
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+zygote {
+    packages("com.android.documentsui", "com.google.android.documentsui", "com.android.externalstorage")
+
+    zygisk {
+        id = "com_v7878_nostoragerestrict"
+        name = "NoStorageRestrict"
+        author = "v7878"
+        description = "Removes the restriction when selecting folders through the file manager on Android 11 and higher"
+        entrypoint = "com.v7878.hooks.nostoragerestrict.Main"
+        archiveName = "NoStorageRestrict"
+        //updateJson = "https://raw.githubusercontent.com/***/update.json"
+    }
+}
+
+dependencies {
+    implementation libs.androidvmtools
+    implementation libs.r8.annotations
+}
