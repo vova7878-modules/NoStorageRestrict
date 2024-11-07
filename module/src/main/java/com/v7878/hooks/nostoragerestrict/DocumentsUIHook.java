@@ -19,7 +19,7 @@ public class DocumentsUIHook {
     private static final String DOCUMENT_STACK = "com.android.documentsui.base.DocumentStack";
     private static final String ACTIVITY_CONFIG = "com.android.documentsui.ActivityConfig";
     private static final String FILES_CONFIG = "com.android.documentsui.files.Config";
-    private static final String SHARED = "com.android.documentsui.base.Shared.java";
+    private static final String SHARED = "com.android.documentsui.base.Shared";
 
     public static void init(ClassLoader loader) throws Throwable {
         {
