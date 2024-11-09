@@ -34,18 +34,16 @@ android {
     }
 }
 
-zygote {
+zygisk {
     packages("com.android.documentsui", "com.google.android.documentsui", "com.android.externalstorage")
 
-    zygisk {
-        id = "com_v7878_nostoragerestrict"
-        name = "NoStorageRestrict"
-        author = "v7878"
-        description = "Removes the restriction when selecting folders through the file manager on Android 11 and higher"
-        entrypoint = "com.v7878.hooks.nostoragerestrict.Main"
-        archiveName = "NoStorageRestrict"
-        //updateJson = "https://raw.githubusercontent.com/***/update.json"
-    }
+    id = "com_v7878_nostoragerestrict"
+    name = "NoStorageRestrict"
+    author = "v7878"
+    description = "Removes the restriction when selecting folders through the file manager on Android 11 and higher"
+    entrypoint = "com.v7878.hooks.nostoragerestrict.Main"
+    archiveName = "NoStorageRestrict"
+    //updateJson = "https://raw.githubusercontent.com/***/update.json"
 }
 
 dependencies {
