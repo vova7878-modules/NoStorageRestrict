@@ -19,4 +19,5 @@
 
 -renamesourcefileattribute SourceFile
 -keepattributes SourceFile,LineNumberTable
--repackageclasses ''
+
+-dontobfuscate

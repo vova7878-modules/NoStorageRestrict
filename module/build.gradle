@@ -43,7 +43,7 @@ zygisk {
     description = "Removes the restriction when selecting folders through the file manager on Android 11 and higher"
     entrypoint = "com.v7878.hooks.nostoragerestrict.Main"
     archiveName = "NoStorageRestrict"
-    //updateJson = "https://raw.githubusercontent.com/***/update.json"
+    updateJson = "https://raw.githubusercontent.com/vova7878-modules/NoStorageRestrict/main/updates/update.json"
 }
 
 dependencies {
