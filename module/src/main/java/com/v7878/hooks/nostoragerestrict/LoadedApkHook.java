@@ -42,12 +42,14 @@ public class LoadedApkHook {
         // Call original method
         createOrUpdateClassLoaderLocked(thiz, addedPaths);
 
-        Log.w(TAG, "APK: " + thiz);
+        try {
+            Objects.requireNonNull(thiz);
+            String package_name = (String) getPackageName.invoke(thiz);
+            ClassLoader loader = (ClassLoader) AndroidUnsafe.getObject(thiz, CLASS_LOADER_OFFSET);
 
-        Objects.requireNonNull(thiz);
-        String package_name = (String) getPackageName.invoke(thiz);
-        ClassLoader loader = (ClassLoader) AndroidUnsafe.getObject(thiz, CLASS_LOADER_OFFSET);
-
-        ApplicationHook.init(package_name, loader);
+            ApplicationHook.init(package_name, loader);
+        } catch (Throwable th) {
+            Log.e(TAG, "Exception", th);
+        }
     }
 }
