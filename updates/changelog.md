@@ -1,1 +1,2 @@
-- First release
+- Fix unclosed file descriptor
+- Updated libraries
